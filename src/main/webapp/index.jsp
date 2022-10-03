@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ingresar</title>
     </head>
     <body>
     
         <form name="Form1" action="proceso" method="GET">
             
-            <h1>Ingresar datos del curso:</h1>
+            <h1>Ingresar curso:</h1>
             
             <label>ID Curso</label><br>
             <input type="text" name="ID"/>
@@ -38,9 +38,9 @@
             <br><br>
             <br><br>
             
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Crear">
         
-        </form>
+        </form>        
         
     </body>
 </html>

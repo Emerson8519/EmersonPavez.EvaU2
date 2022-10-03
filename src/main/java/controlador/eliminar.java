@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author emers
  */
-public class proceso extends HttpServlet {
+public class eliminar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,45 +35,30 @@ public class proceso extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-                //repueracion datos del "index.jsp"
-                String strCodigo = request.getParameter("ID");
-                String strNomCurso = request.getParameter("curso");
-                String strNomPro = request.getParameter("profesor");
-                String strMateriales = request.getParameter("materiales");
-                String strDescripcion = request.getParameter("descripcion");
-                
-                
-                //Creación objeto entity y se asignan valores
-                Curso curso = new Curso();
-                curso.setId(strCodigo);
-                curso.setCurso(strNomCurso);
-                curso.setProfesor(strNomPro);
-                curso.setMateriales(strMateriales);
-                curso.setDescripcion(strDescripcion);
         
-                //Creación de objeto dao
-                CursoDAO dao = new CursoDAO();
-                    try {
-                        dao.create(curso);
-                        System.out.println("Grabado con exito!");
-
-                    } catch (Exception ex) {
-                        System.out.println("ERROR: ");
-                        Logger.getLogger(proceso.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+        String strCod = request.getParameter("ID");
+         
         
-                    request.getRequestDispatcher("retorno.jsp").forward(request, response);
+        //Creación objeto entity y se asignan valores
+        Curso curso = new Curso();
+        curso.setId(strCod);
         
-                    
-                    /**
-                        //Eliminar datos
-                        try {
-                            dao.destroy(strCodigo);
-                        } catch (NonexistentEntityException ex) {
-                            Logger.getLogger(proceso.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    */
-                    
+        //Creación de objeto dao
+        CursoDAO dao = new CursoDAO();
+        
+        try {
+            dao.destroy(strCod);
+            System.out.println("Registro eliminado correctamente.");
+            
+        } catch (NonexistentEntityException ex) {
+            
+            System.out.println("ERROR: ");
+            Logger.getLogger(eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        request.getRequestDispatcher("retorno.jsp").forward(request, response);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

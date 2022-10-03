@@ -4,17 +4,23 @@
         <servlet-name>proceso</servlet-name>
         <servlet-class>controlador.proceso</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminar</servlet-name>
+        <servlet-class>controlador.eliminar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>proceso</servlet-name>
         <url-pattern>/proceso</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>eliminar</servlet-name>
+        <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-
     <data-source>
         <description>DataSource cursos</description>
         <name>java:app/cursoDS</name>
