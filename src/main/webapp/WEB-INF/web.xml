@@ -8,6 +8,10 @@
         <servlet-name>eliminar</servlet-name>
         <servlet-class>controlador.eliminar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editar</servlet-name>
+        <servlet-class>controlador.editar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>proceso</servlet-name>
         <url-pattern>/proceso</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>eliminar</servlet-name>
         <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editar</servlet-name>
+        <url-pattern>/editar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

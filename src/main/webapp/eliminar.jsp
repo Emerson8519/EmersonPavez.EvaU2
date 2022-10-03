@@ -13,7 +13,7 @@
     </head>
     <body>
       
-            <form name="Form1" action="eliminar" method="GET">
+            <form name="Form3" action="eliminar" method="GET">
             
             <h1>Eliminar curso:</h1>
             

@@ -19,9 +19,10 @@
         <br>
         <a href="index.jsp">Ingresar datos</a><br>
         <br>
-        
+        <a href="edicion.jsp">Editar datos</a><br>
+        <br>
         <a href="eliminar.jsp">Eliminar datos</a><br>
         <br>
-        
+                
     </body>
 </html>

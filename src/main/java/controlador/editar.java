@@ -6,7 +6,6 @@
 package controlador;
 
 import dao.CursoDAO;
-import dao.exceptions.NonexistentEntityException;
 import entities.Curso;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author emers
  */
-public class proceso extends HttpServlet {
+public class editar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,56 +33,34 @@ public class proceso extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-                //recuperacion datos del "index.jsp"
-                String strCodigo = request.getParameter("ID");
-                String strNomCurso = request.getParameter("curso");
-                String strNomPro = request.getParameter("profesor");
-                String strMateriales = request.getParameter("materiales");
-                String strDescripcion = request.getParameter("descripcion");
+    
+            //recuperacion datos del "index.jsp"
+                String strC = request.getParameter("ID");
+                String strNomCur = request.getParameter("curso");
+                String strNomProfe = request.getParameter("profesor");
+                String strMater = request.getParameter("materiales");
+                String strDescrip = request.getParameter("descripcion");
                 
                 
                 //Creación objeto entity y se asignan valores
                 Curso curso = new Curso();
-                curso.setId(strCodigo);
-                curso.setCurso(strNomCurso);
-                curso.setProfesor(strNomPro);
-                curso.setMateriales(strMateriales);
-                curso.setDescripcion(strDescripcion);
+                curso.setId(strC);
+                curso.setCurso(strNomCur);
+                curso.setProfesor(strNomProfe);
+                curso.setMateriales(strMater);
+                curso.setDescripcion(strDescrip);
         
-                //Creación de objeto dao
                 CursoDAO dao = new CursoDAO();
                     try {
-                        dao.create(curso);
-                        System.out.println("Grabado con exito!");
-
+                            dao.edit(curso);
+                            System.out.println("Edición exitosa!");
                     } catch (Exception ex) {
-                        System.out.println("ERROR: ");
-                        Logger.getLogger(proceso.class.getName()).log(Level.SEVERE, null, ex);
+                            System.out.println("ERROR: ");
+                            Logger.getLogger(proceso.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                 request.getRequestDispatcher("retorno.jsp").forward(request, response);
-                    
-                    /**
-                        //Editar Datos
-                            CursoDAO dao = new CursoDAO();
-                            try {
-                                dao.edit(curso);
-                                System.out.println("Edición exitosa!");
-                            } catch (Exception ex) {
-                                System.out.println("ERROR: ");
-                                Logger.getLogger(proceso.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                    
-                        //Eliminar datos
-                            CursoDAO dao = new CursoDAO();
-                            try {
-                                dao.destroy(strCodigo);
-                            } catch (NonexistentEntityException ex) {
-                                Logger.getLogger(proceso.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                    */
-                    
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
